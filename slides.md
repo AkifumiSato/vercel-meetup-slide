@@ -152,11 +152,12 @@ breadcrumb: Next.jsとブラウザバック体験
 [recoil-sync-next](https://github.com/recruit-tech/recoil-sync-next)
 
 ```tsx{|4-7}
-export const counter = initializableAtomFamily<number, string>({
+export const counter = atom<number>({
   key: 'counterState',
+  default: 0,
   effects: [
     syncEffect({
-      storeKey: 'ui-state',
+      storeKey: 'ui-state', // 任意のkeyに紐づけて保存できる
       refine: number(),
     }
   )],
@@ -191,6 +192,7 @@ breadcrumb: 今後Next.jsに求めたいこと
 
 # ブラウザバック体験から、Next.jsにもとめたいこと
 
-- まず`scrollRestoration`があることに感謝
+まず`scrollRestoration`があることに感謝
+
 - Beta機能の`app`ディレクトリでも、`scrollRestoration`対応してくれると嬉しい
-- 公式に履歴に紐づく状態管理ができるようになると嬉しい
+- 公式に履歴に紐づく状態管理（`useNextState`...?）ができるようになると嬉しい
