@@ -54,7 +54,7 @@ breadcrumb: SPAとブラウザバック
 - **Don't break history, enhance it**
   - 履歴は壊すべきじゃない
   - 「ユーザーは"戻る"事によってデータが変更されるような事は期待していない。」
-  - スクロール位置やデータはhistoryに関連づけられ、復元されることが望ましい
+  - スクロール位置や状態はhistoryに関連づけられ、復元されることが望ましい
 
 ---
 layout: sub-section
@@ -72,6 +72,18 @@ breadcrumb: SPAとブラウザバック
 ---
 
 <Title>Next.jsとブラウザバック体験</Title>
+
+---
+layout: sub-section
+breadcrumb: Next.jsとブラウザバック体験
+---
+
+# ブラウザバック体験における重要な機能
+
+前述のブラウザバック体験における重要な2つの機能ついて、Next.jsがどうなってるか見てみる
+
+- **スクロール位置の復元**
+- **状態の復元**
 
 ---
 layout: sub-section
@@ -101,7 +113,13 @@ breadcrumb: Next.jsとブラウザバック体験
 
 # Next.jsのスクロール復元
 
-TBW: バグ修正の話書きたい
+余談: リロード時にNext.js内部の履歴がリセットされるバグを修正した
+
+https://github.com/vercel/next.js/pull/36861
+
+<div class="flex justify-center">
+  <img src="/assets/nextjs-pr.png" class="h-60">
+</div>
 
 ---
 layout: sub-section
@@ -125,14 +143,54 @@ breadcrumb: Next.jsとブラウザバック体験
 
 # Next.jsの状態復元
 
-TBW
+残念ながら、公式に履歴に紐づけて状態を保存する手段はまだない...
+
+<v-click>
+
+**なので、復元するライブラリを作った！（作るのを手伝った）**
+
+[recoil-sync-next](https://github.com/recruit-tech/recoil-sync-next)
+
+```tsx{|4-7}
+export const counter = initializableAtomFamily<number, string>({
+  key: 'counterState',
+  effects: [
+    syncEffect({
+      storeKey: 'ui-state',
+      refine: number(),
+    }
+  )],
+})
+```
+
+</v-click>
+
+---
+layout: sub-section
+breadcrumb: Next.jsとブラウザバック体験
+---
+
+# Next.jsの状態復元
+
+これも、詳細な解説はzennにまとめてあるのでそちらをご参照ください。
+
+https://zenn.dev/akfm/articles/recoi-sync-next
+
+<div class="flex justify-center">
+  <img src="/assets/zenn-history.png" class="h-60">
+</div>
 
 ---
 
-# 構成
+<Title>今後Next.jsに求めたいこと</Title>
 
-- 自己紹介(1m)
-- ブラウザバック体験とSPA(2m)
-- Next.jsはどうなのか(5m)
-- スクロール周りのバグ修正(1m)
-- 今後Next.jsに求めたいこと(1m)
+---
+layout: sub-section
+breadcrumb: 今後Next.jsに求めたいこと
+---
+
+# ブラウザバック体験から、Next.jsにもとめたいこと
+
+- まず`scrollRestoration`があることに感謝
+- Beta機能の`app`ディレクトリでも、`scrollRestoration`対応してくれると嬉しい
+- 公式に履歴に紐づく状態管理ができるようになると嬉しい
