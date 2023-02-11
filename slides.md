@@ -143,13 +143,21 @@ breadcrumb: Next.js and browser-back
 
 # Restoration of state
 
-Unfortunately, there is still no way to it to save history state.
+Unfortunately, there is no way yet to save the history state using the public API.
 
-<v-click>
+- Next.js router does not publish keys.
+- Next.js completely replaces history.state.
+  - A hitstory key for Next.js's internals exists in `history.state`.
+    - Depends on internal implementation, but history state can be realized by referring to this.
 
-**We have created a new library!(and I helped a little with that.)**
+---
+layout: sub-section
+breadcrumb: Next.js and browser-back
+---
 
-[recoil-sync-next](https://github.com/recruit-tech/recoil-sync-next)
+# Restoration of state
+
+We have created a new library, [recoil-sync-next](https://github.com/recruit-tech/recoil-sync-next)!(and I helped a little with that.)
 
 ```tsx{|4-7}
 export const counter = atom<number>({
@@ -163,8 +171,6 @@ export const counter = atom<number>({
   )],
 })
 ```
-
-</v-click>
 
 ---
 layout: sub-section
@@ -194,5 +200,7 @@ breadcrumb: What we want Next.js in the future
 
 First of all, thanks for having `scrollRestoration`.
 
-- It would be nice if the beta feature `app` directory could also support `scrollRestoration`!
-- History state management (`useNextState`?) would be nice to see implemented.
+- It would be nice!
+  - if the beta feature `app` directory could also support `scrollRestoration`.
+  - History state management (`useNextState`?) implemented.
+  - router would expose the key as with the [Navigation API](https://developer.mozilla.org/en-US/docs/Web/API/Navigation_API).

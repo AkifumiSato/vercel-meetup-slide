@@ -1,11 +1,9 @@
-# Welcome to [Slidev](https://github.com/slidevjs/slidev)!
+# Vercel Meetup #0 slide
 
-To start the slide show:
+## preview
 
-- `npm install`
-- `npm run dev`
-- visit http://localhost:3030
+https://zesty-basbousa-04576f.netlify.app/1
 
-Edit the [slides.md](./slides.md) to see the changes.
+## event
 
-Learn more about Slidev on [documentations](https://sli.dev/).
+https://vercel.connpass.com/event/274772/
