@@ -24,76 +24,75 @@ remoteAssets: false
   - github: AkifumiSato
   - zenn.dev: akfm
   - Front-end/Backend Engineer
-- Next.js
-  - 仕事でもNext.jsのプロジェクトを担当
-  - 自身のサイトなどもNext.js
+- Using Next.js
+  - work
+  - my site
 
 ---
 layout: message
 ---
 
-今日話したいこと:
+Theme:
 
-Next.jsとブラウザバックの話
+Browser-back experience and Next.js
 
 ---
 
-<Title>SPAとブラウザバック</Title>
+<Title>Why browser-back Experience?</Title>
 
 ---
 layout: sub-section
-breadcrumb: SPAとブラウザバック
+breadcrumb: Why browser-back Experience?
 ---
 
-# ブラウザバック体験の重要性
+# Importance of the browser-back Experience
 
-ブラウザバックはユーザーにとって、最も重要なWebブラウジング体験の1つ。
+Browser back is one of the most important web browsing experiences for users.
 
-- 元ネタ: [リッチなWebアプリケーションのための7つの原則](https://yosuke-furukawa.hatenablog.com/entry/2014/11/14/141415)
-  - 原著: [7 Principles of Rich Web Applications](https://rauchg.com/2014/7-principles-of-rich-web-applications)
-  - rauch氏による過去のブログ
+- [7 Principles of Rich Web Applications](https://rauchg.com/2014/7-principles-of-rich-web-applications)
+  - translation: [リッチなWebアプリケーションのための7つの原則](https://yosuke-furukawa.hatenablog.com/entry/2014/11/14/141415)
+  - Mr. rauch wrote.
 - **Don't break history, enhance it**
-  - 履歴は壊すべきじゃない
-  - 「ユーザーは"戻る"事によってデータが変更されるような事は期待していない。」
-  - スクロール位置や状態はhistoryに関連づけられ、復元されることが望ましい
+  - `Back should be quick; users don't expect data to have changed much.`
+  - Scroll position and state should be associated with history and restored.
 
 ---
 layout: sub-section
-breadcrumb: SPAとブラウザバック
+breadcrumb: Why browser-back Experience?
 ---
 
-# ブラウザバック体験の重要性
+# Importance of the browser-back Experience
 
-しかし、こういった原則を重視してるサイトは少ない...
+But few sites focus on these principles...
 
-- 多くのサイトではスクロール位置や状態が失われる
-- ユーザーからの不平不満も存在する
+- Many sites lose scroll position and state.
+- Complaints from users also exist.
   - https://rentwi.hyuki.net/?1576010373357965312
 
 ---
 
-<Title>Next.jsとブラウザバック体験</Title>
+<Title>Next.js and browser-back</Title>
 
 ---
 layout: sub-section
-breadcrumb: Next.jsとブラウザバック体験
+breadcrumb: Next.js and browser-back
 ---
 
-# ブラウザバック体験における重要な機能
+# Important features in the browser-back experience
 
-前述のブラウザバック体験における重要な2つの機能ついて、Next.jsがどうなってるか見てみる
+Let's see what Next.js has to implement about two important features of the aforementioned Browser-back experience
 
-- **スクロール位置の復元**
-- **状態の復元**
+- **Restoration of scroll position**
+- **Restoration of state**
 
 ---
 layout: sub-section
-breadcrumb: Next.jsとブラウザバック体験
+breadcrumb: Next.js and browser-back
 ---
 
-# Next.jsのスクロール復元
+# Restoration of scroll position
 
-experimental(実験的機能)で提供されてるappディレクトリはおそらく未対応？
+Implemented with the experimental flag.
 
 ```ts
 // next.config.js
@@ -109,12 +108,12 @@ module.exports = nextConfig
 
 ---
 layout: sub-section
-breadcrumb: Next.jsとブラウザバック体験
+breadcrumb: Next.js and browser-back
 ---
 
-# Next.jsのスクロール復元
+# Restoration of scroll position
 
-余談: リロード時にNext.js内部の履歴がリセットされるバグを修正した
+fix: Scroll restoration bug caused by idx reset to 0 on reload.
 
 https://github.com/vercel/next.js/pull/36861
 
@@ -124,10 +123,10 @@ https://github.com/vercel/next.js/pull/36861
 
 ---
 layout: sub-section
-breadcrumb: Next.jsとブラウザバック体験
+breadcrumb: Next.js and browser-back
 ---
 
-# Next.jsのスクロール復元
+# Restoration of scroll position
 
 詳細な解説はzennにまとめてあるので、そちらをご参照ください。
 
@@ -139,16 +138,16 @@ https://zenn.dev/akfm/articles/next-js-scroll-restore
 
 ---
 layout: sub-section
-breadcrumb: Next.jsとブラウザバック体験
+breadcrumb: Next.js and browser-back
 ---
 
-# Next.jsの状態復元
+# Restoration of state
 
-残念ながら、公式に履歴に紐づけて状態を保存する手段はまだない...
+Unfortunately, there is still no way to it to save history state.
 
 <v-click>
 
-**なので、復元するライブラリを作った！（作るのを手伝った）**
+**We have created a new library!(and I helped a little with that.)**
 
 [recoil-sync-next](https://github.com/recruit-tech/recoil-sync-next)
 
@@ -158,7 +157,7 @@ export const counter = atom<number>({
   default: 0,
   effects: [
     syncEffect({
-      storeKey: 'ui-state', // 任意のkeyに紐づけて保存できる
+      storeKey: 'ui-state',
       refine: number(),
     }
   )],
@@ -169,10 +168,10 @@ export const counter = atom<number>({
 
 ---
 layout: sub-section
-breadcrumb: Next.jsとブラウザバック体験
+breadcrumb: Next.js and browser-back
 ---
 
-# Next.jsの状態復元
+# Restoration of state
 
 これも、詳細な解説はzennにまとめてあるのでそちらをご参照ください。
 
@@ -184,16 +183,16 @@ https://zenn.dev/akfm/articles/recoi-sync-next
 
 ---
 
-<Title>今後Next.jsに求めたいこと</Title>
+<Title>What we want Next.js in the future</Title>
 
 ---
 layout: sub-section
-breadcrumb: 今後Next.jsに求めたいこと
+breadcrumb: What we want Next.js in the future
 ---
 
-# ブラウザバック体験から、Next.jsにもとめたいこと
+# What we want from the browser-back experience for Next.js
 
-まず`scrollRestoration`があることに感謝
+First of all, thanks for having `scrollRestoration`.
 
-- Beta機能の`app`ディレクトリでも、`scrollRestoration`対応してくれると嬉しい
-- 公式に履歴に紐づく状態管理（`useNextState`...?）ができるようになると嬉しい
+- It would be nice if the beta feature `app` directory could also support `scrollRestoration`!
+- History state management (`useNextState`?) would be nice to see implemented.
