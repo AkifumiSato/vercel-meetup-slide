@@ -7,22 +7,23 @@ fonts:
 lineNumbers: false
 drawings:
   persist: true
-title: ブラウザバック体験で見るNext.js
+title: Browser-back experience and Next.js
+remoteAssets: false
 ---
 
-# ブラウザバック体験で見る<br>Next.js
+# Browser-back experience <br>and Next.js
 
-Vercel Meetup #0
+ブラウザバック体験で見るNext.js
 
 ---
 
-# 自己紹介
+# About
 
-- name: 佐藤 昭文
+- name: Akifumi Sato
   - twitter: akfm_sato
   - github: AkifumiSato
-  - zenn: akfm
-  - フロントエンド/サーバーサイドエンジニア
+  - zenn.dev: akfm
+  - Front-end/Backend Engineer
 - Next.js
   - 仕事でもNext.jsのプロジェクトを担当
   - 自身のサイトなどもNext.js
@@ -50,7 +51,7 @@ breadcrumb: SPAとブラウザバック
 
 - 元ネタ: [リッチなWebアプリケーションのための7つの原則](https://yosuke-furukawa.hatenablog.com/entry/2014/11/14/141415)
   - 原著: [7 Principles of Rich Web Applications](https://rauchg.com/2014/7-principles-of-rich-web-applications)
-  - rauchg氏による過去のブログ
+  - rauch氏による過去のブログ
 - **Don't break history, enhance it**
   - 履歴は壊すべきじゃない
   - 「ユーザーは"戻る"事によってデータが変更されるような事は期待していない。」
