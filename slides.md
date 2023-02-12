@@ -38,11 +38,11 @@ Browser-back experience and Next.js
 
 ---
 
-<Title>Why browser-back Experience?</Title>
+<Title>Why browser-back experience?</Title>
 
 ---
 layout: sub-section
-breadcrumb: Why browser-back Experience?
+breadcrumb: Why browser-back experience?
 ---
 
 # Importance of the browser-back Experience
@@ -50,7 +50,7 @@ breadcrumb: Why browser-back Experience?
 Browser back is one of the most important web browsing experiences for users.
 
 - [7 Principles of Rich Web Applications](https://rauchg.com/2014/7-principles-of-rich-web-applications)
-  - translation: [リッチなWebアプリケーションのための7つの原則](https://yosuke-furukawa.hatenablog.com/entry/2014/11/14/141415)
+  - Translation: [リッチなWebアプリケーションのための7つの原則](https://yosuke-furukawa.hatenablog.com/entry/2014/11/14/141415)
   - Mr. rauch wrote.
 - **Don't break history, enhance it**
   - `Back should be quick; users don't expect data to have changed much.`
@@ -58,10 +58,10 @@ Browser back is one of the most important web browsing experiences for users.
 
 ---
 layout: sub-section
-breadcrumb: Why browser-back Experience?
+breadcrumb: Why browser-back experience?
 ---
 
-# Importance of the browser-back Experience
+# Importance of the browser-back experience
 
 But few sites focus on these principles...
 
@@ -80,7 +80,7 @@ breadcrumb: Next.js and browser-back
 
 # Important features in the browser-back experience
 
-Let's see what Next.js has to implement about two important features of the aforementioned Browser-back experience
+Let's see what Next.js has to implement about two important features of the aforementioned browser-back experience
 
 - **Restoration of scroll position**
 - **Restoration of state**
@@ -203,4 +203,4 @@ First of all, thanks for having `scrollRestoration`.
 - It would be nice!
   - if the beta feature `app` directory could also support `scrollRestoration`.
   - History state management (`useNextState`?) implemented.
-  - router would expose the key as with the [Navigation API](https://developer.mozilla.org/en-US/docs/Web/API/Navigation_API).
+  - Router would expose the key as with the [Navigation API](https://developer.mozilla.org/en-US/docs/Web/API/Navigation_API).
