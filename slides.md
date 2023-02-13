@@ -51,7 +51,7 @@ Browser back is one of the most important web browsing experiences for users.
 
 - [7 Principles of Rich Web Applications](https://rauchg.com/2014/7-principles-of-rich-web-applications)
   - Translation: [リッチなWebアプリケーションのための7つの原則](https://yosuke-furukawa.hatenablog.com/entry/2014/11/14/141415)
-  - Mr. rauch wrote.
+  - Written by Mr. Rauch.
 - **Don't break history, enhance it**
   - `Back should be quick; users don't expect data to have changed much.`
   - Scroll position and state should be associated with history and restored.
@@ -66,6 +66,7 @@ breadcrumb: Why browser-back experience?
 But few sites focus on these principles...
 
 - Many sites lose scroll position and state.
+  - e.g. Accordion, tab ui, etc.
 - Complaints from users also exist.
   - https://rentwi.hyuki.net/?1576010373357965312
 
@@ -145,8 +146,8 @@ breadcrumb: Next.js and browser-back
 
 Unfortunately, there is no way yet to save the history state using the public API.
 
+- Next.js completely replaces `history.state`.
 - Next.js router does not publish keys.
-- Next.js completely replaces history.state.
   - A hitstory key for Next.js's internals exists in `history.state`.
     - Depends on internal implementation, but history state can be realized by referring to this.
 
@@ -202,5 +203,5 @@ First of all, thanks for having `scrollRestoration`.
 
 - It would be nice!
   - if the beta feature `app` directory could also support `scrollRestoration`.
+  - `next/router` would expose the key as with the [Navigation API](https://developer.mozilla.org/en-US/docs/Web/API/Navigation_API).
   - History state management (`useNextState`?) implemented.
-  - Router would expose the key as with the [Navigation API](https://developer.mozilla.org/en-US/docs/Web/API/Navigation_API).
