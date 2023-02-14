@@ -7,11 +7,11 @@ fonts:
 lineNumbers: false
 drawings:
   persist: true
-title: Browser-back experience and Next.js
+title: Browser back experience and Next.js
 remoteAssets: false
 ---
 
-# Browser-back experience <br>and Next.js
+# Browser back experience <br>and Next.js
 
 ブラウザバック体験で見るNext.js
 
@@ -24,6 +24,7 @@ remoteAssets: false
   - github: AkifumiSato
   - zenn.dev: akfm
   - Front-end/Backend Engineer
+  - book: 「Webアプリ開発で学ぶ Rust言語入門」
 - Using Next.js
   - work
   - my site
@@ -34,18 +35,18 @@ layout: message
 
 Theme:
 
-Browser-back experience and Next.js
+Browser back experience and Next.js
 
 ---
 
-<Title>Why browser-back experience?</Title>
+<Title>Why browser back experience?</Title>
 
 ---
 layout: sub-section
-breadcrumb: Why browser-back experience?
+breadcrumb: Why browser back experience?
 ---
 
-# Importance of the browser-back Experience
+# Importance of the browser back experience
 
 Browser back is one of the most important web browsing experiences for users.
 
@@ -54,46 +55,47 @@ Browser back is one of the most important web browsing experiences for users.
   - Written by Mr. Rauch.
 - **Don't break history, enhance it**
   - `Back should be quick; users don't expect data to have changed much.`
-  - Scroll position and state should be associated with history and restored.
+  - Scroll position and UI state should be restored by browser back / forward.
 
 ---
 layout: sub-section
-breadcrumb: Why browser-back experience?
+breadcrumb: Why browser back experience?
 ---
 
-# Importance of the browser-back experience
+# Importance of the browser back experience
 
-But few sites focus on these principles...
+However, most applications don't care about browser back / forward restoration.
 
-- Many sites lose scroll position and state.
+- Scroll position and UI state is missed on some sites.
   - e.g. Accordion, tab ui, etc.
-- Complaints from users also exist.
+- Some users complained about these situations.
   - https://rentwi.hyuki.net/?1576010373357965312
 
 ---
 
-<Title>Next.js and browser-back</Title>
+<Title>Next.js and browser back</Title>
 
 ---
 layout: sub-section
-breadcrumb: Next.js and browser-back
+breadcrumb: Next.js and browser back
 ---
 
-# Important features in the browser-back experience
+# Important features in the browser back experience
 
-Let's see what Next.js has to implement about two important features of the aforementioned browser-back experience
+IMO, Next.js would be better to implement the below features for the browser back experience.
 
-- **Restoration of scroll position**
-- **Restoration of state**
+- Scroll restoration
+- UI state sync when next.js router is changed
+  - It would be better `next/router` is easy to use a global state management system such as Redux, Recoil, etc.
 
 ---
 layout: sub-section
-breadcrumb: Next.js and browser-back
+breadcrumb: Next.js and browser back
 ---
 
 # Restoration of scroll position
 
-Implemented with the experimental flag.
+Scroll restoration has been implemented already behind the experimental flag.
 
 ```ts
 // next.config.js
@@ -109,7 +111,7 @@ module.exports = nextConfig
 
 ---
 layout: sub-section
-breadcrumb: Next.js and browser-back
+breadcrumb: Next.js and browser back
 ---
 
 # Restoration of scroll position
@@ -124,7 +126,7 @@ https://github.com/vercel/next.js/pull/36861
 
 ---
 layout: sub-section
-breadcrumb: Next.js and browser-back
+breadcrumb: Next.js and browser back
 ---
 
 # Restoration of scroll position
@@ -139,26 +141,26 @@ https://zenn.dev/akfm/articles/next-js-scroll-restore
 
 ---
 layout: sub-section
-breadcrumb: Next.js and browser-back
+breadcrumb: Next.js and browser back
 ---
 
-# Restoration of state
+# Restoration of UI state
 
-Unfortunately, there is no way yet to save the history state using the public API.
+Unfortunately, we cannot sync our UI state with `next/router` changed using public API.
 
-- Next.js completely replaces `history.state`.
-- Next.js router does not publish keys.
+- Next.js encapsulates `history.state`.
+- In `next/router`, the history key is included in `history.state` but it is not opened.
   - A hitstory key for Next.js's internals exists in `history.state`.
     - Depends on internal implementation, but history state can be realized by referring to this.
 
 ---
 layout: sub-section
-breadcrumb: Next.js and browser-back
+breadcrumb: Next.js and browser back
 ---
 
-# Restoration of state
+# Restoration of UI state
 
-We have created a new library, [recoil-sync-next](https://github.com/recruit-tech/recoil-sync-next)!(and I helped a little with that.)
+We have created a new library, [recoil-sync-next](https://github.com/recruit-tech/recoil-sync-next)!(and I helped a little with that.)<br>This lib could be better to improve the browser back experience.
 
 ```tsx{|4-7}
 export const counter = atom<number>({
@@ -175,10 +177,10 @@ export const counter = atom<number>({
 
 ---
 layout: sub-section
-breadcrumb: Next.js and browser-back
+breadcrumb: Next.js and browser back
 ---
 
-# Restoration of state
+# Restoration of UI state
 
 これも、詳細な解説はzennにまとめてあるのでそちらをご参照ください。
 
@@ -197,7 +199,7 @@ layout: sub-section
 breadcrumb: What we want Next.js in the future
 ---
 
-# What we want from the browser-back experience for Next.js
+# What we want from the browser back experience for Next.js
 
 First of all, thanks for having `scrollRestoration`.
 
