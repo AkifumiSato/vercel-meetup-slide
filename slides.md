@@ -55,7 +55,7 @@ Browser back is one of the most important web browsing experiences for users.
   - Written by Mr. Rauch.
 - **Don't break history, enhance it**
   - `Back should be quick; users don't expect data to have changed much.`
-  - Scroll position and UI state should be restored by browser back / forward.
+  - Scroll position and UI state would be better restored by browser back / forward.
 
 ---
 layout: sub-section
@@ -86,7 +86,7 @@ IMO, Next.js would be better to implement the below features for the browser bac
 
 - Scroll restoration
 - UI state sync when next.js router is changed
-  - It would be better `next/router` is easy to use a global state management system such as Redux, Recoil, etc.
+  - It would be better `next/router` is easy to integrate with a global state management system such as Redux, Recoil, etc.
 
 ---
 layout: sub-section
@@ -192,14 +192,14 @@ https://zenn.dev/akfm/articles/recoi-sync-next
 
 ---
 
-<Title>What we want Next.js in the future</Title>
+<Title>What we would like to Next.js in the future</Title>
 
 ---
 layout: sub-section
-breadcrumb: What we want Next.js in the future
+breadcrumb: What we would like to Next.js in the future
 ---
 
-# What we want from the browser back experience for Next.js
+# What we would like to from the browser back experience for Next.js
 
 First of all, thanks for having `scrollRestoration`.
 
