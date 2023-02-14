@@ -15,5 +15,6 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   width: max-content;
+  line-height: 1.5;
 }
 </style>

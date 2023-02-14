@@ -35,7 +35,7 @@ layout: message
 
 Theme:
 
-Browser back experience and Next.js
+Browser back experience<br> and Next.js
 
 ---
 
@@ -192,7 +192,7 @@ https://zenn.dev/akfm/articles/recoi-sync-next
 
 ---
 
-<Title>What we would like to Next.js in the future</Title>
+<Title>What we would like to Next.js<br> in the future</Title>
 
 ---
 layout: sub-section
