@@ -23,7 +23,7 @@ remoteAssets: false
   - twitter: akfm_sato
   - github: AkifumiSato
   - zenn.dev: akfm
-  - Front-end/Backend Engineer
+  - Frontend/Backend Engineer
   - book: 「Webアプリ開発で学ぶ Rust言語入門」
 - Using Next.js
   - work
