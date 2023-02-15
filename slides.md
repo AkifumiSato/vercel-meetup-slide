@@ -27,7 +27,8 @@ remoteAssets: false
   - book: 「Webアプリ開発で学ぶ Rust言語入門」
 - Using Next.js
   - work
-  - my site
+  - my site: https://akfm.dev/
+    - on vercel
 
 ---
 layout: message
@@ -58,7 +59,11 @@ Browser back is one of the most important web browsing experiences for users.
   - Scroll position and UI state would be better restored by browser back / forward.
 
 <!--
+Webブラウジングにおいて、ブラウザバックは非常に重要な機能の1つです。
+このことは、以下の7つの原則においても言及されています。
+
 - 7つの原則
+  - Rauch氏著
 - historyを壊すべきじゃない、historyを拡張しよう
   - `"戻る"のは素早く行われるべきだ。ユーザーは"戻る"事によってデータが変更されるような事は期待していない。`
   - スクロール位置やUI Stateはブラウザバック・フォワード時に復元されることが望ましい。
@@ -87,23 +92,28 @@ However, most applications don't care about browser back / forward restoration.
 
 ---
 
-<Title>Next.js and browser back</Title>
+<Title>Browser back and Next.js</Title>
+
+<!--
+Next.jsをブラウザバック観点から見てみます。
+-->
 
 ---
 layout: sub-section
-breadcrumb: Next.js and browser back
+breadcrumb: Browser back and Next.js<
 ---
 
 # Important features in the browser back experience
 
 IMO, Next.js would be better to implement the below features for the browser back experience.
 
-- Scroll restoration
-- UI state sync when next.js router is changed
-  - It would be better `next/router` is easy to integrate with a global state management system such as Redux, Recoil, etc.
+- **Restoration of scroll position**
+- **Restoration of UI state**
+  - UI state sync when next.js router is changed
+    - It would be better `next/router` is easy to integrate with a global state management system such as Redux, Recoil, etc.
 
 <!--
-Next.jsにおいても、快適なブラウザバック体験のために以下のような機能を実装されてることが望ましいと考えられます。
+Next.jsアプリでの快適なブラウザバック体験のためには、以下のような機能を実装されてることが望ましいと考えられます。
 
 - スクロール位置復元
 - Next.jsのルーティングとUI Stateの同期
@@ -112,7 +122,7 @@ Next.jsにおいても、快適なブラウザバック体験のために以下�
 
 ---
 layout: sub-section
-breadcrumb: Next.js and browser back
+breadcrumb: Browser back and Next.js<
 ---
 
 # Restoration of scroll position
@@ -132,12 +142,13 @@ module.exports = nextConfig
 ```
 
 <!--
-実は既に、スクロール復元はexperimentalで実装されています。
+スクロール復元についてはすでに、experimentalで実装されています。
+beta機能のappディレクトリでは未対応＋他の対応をする予定っぽいような記述も見られる？ので、現状pagesでのみ対応されてます。
 -->
 
 ---
 layout: sub-section
-breadcrumb: Next.js and browser back
+breadcrumb: Browser back and Next.js<
 ---
 
 # Restoration of scroll position
@@ -157,7 +168,7 @@ https://github.com/vercel/next.js/pull/36861
 
 ---
 layout: sub-section
-breadcrumb: Next.js and browser back
+breadcrumb: Browser back and Next.js<
 ---
 
 # Restoration of scroll position
@@ -172,7 +183,7 @@ https://zenn.dev/akfm/articles/next-js-scroll-restore
 
 ---
 layout: sub-section
-breadcrumb: Next.js and browser back
+breadcrumb: Browser back and Next.js<
 ---
 
 # Restoration of UI state
@@ -187,14 +198,15 @@ Unfortunately, we cannot sync our UI state with `next/router` changed using publ
 Ui Stateについては、残念ながら現状`next/router`の変更と同期するための公開されたAPIはありません。
 
 - Next.jsは`history.state`を完全に置き換えてしまいます
-  - そのため、`next/router`と統合したいが...
+  - なので、基本自前での管理は不可能
+  - 履歴と同期した状態を作るには`next/router`とうまく統合したいが...
 - `next/router`は履歴のkeyを`history.state`に格納するが、これを公開してない
   - 内部実装に依存することになるが、これを参照することで一応ブラウザバック時の復元を実現できる
 -->
 
 ---
 layout: sub-section
-breadcrumb: Next.js and browser back
+breadcrumb: Browser back and Next.js<
 ---
 
 # Restoration of UI state
@@ -220,7 +232,7 @@ export const counter = atom<number>({
 
 ---
 layout: sub-section
-breadcrumb: Next.js and browser back
+breadcrumb: Browser back and Next.js<
 ---
 
 # Restoration of UI state
@@ -237,6 +249,10 @@ https://zenn.dev/akfm/articles/recoi-sync-next
 
 <Title>What we would like to Next.js<br> in the future</Title>
 
+<!--
+最後に、ブラウザバック体験から見てNext.jsに今後望むこと、についてです。
+-->
+
 ---
 layout: sub-section
 breadcrumb: What we would like to Next.js in the future
@@ -252,8 +268,7 @@ First of all, thanks for having `scrollRestoration`.
   - History state management (`useNextState`?) implemented.
 
 <!--
-最後に、ブラウザバック体験から見てNext.jsに今後望むこと、についてです。
-まず`scrollRestoration`があることに感謝なのですが、欲を言えば、以下があると嬉しいです。
+欲を言えば、以下があると嬉しいです。
 
 - 現在ベータ機能の`app`ディレクトリでも同様の対応がされること
 - NavigationAPI同様、`next/router`もkeyを公開すること
