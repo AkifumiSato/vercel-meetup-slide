@@ -59,7 +59,7 @@ Browser back is one of the most important web browsing experiences for users.
   - Scroll position and UI state would be better restored by browser back / forward.
 
 <!--
-Webブラウジングにおいて、ブラウザバックは非常に重要な機能の1つです。
+ブラウザバックはWebブラウジングにおいて、非常に重要な機能の1つです。
 このことは、以下の7つの原則においても言及されています。
 
 - 7つの原則
@@ -84,7 +84,7 @@ However, most applications don't care about browser back / forward restoration.
   - https://rentwi.hyuki.net/?1576010373357965312
 
 <!--
-残念ながら多くのサイトではブラウザバック体験はそもそも気にされてない。
+しかしながら、多くのサイトではブラウザバック体験はそもそも気にされてない。
 
 - スクロール位置やUI Stateが失われるサイトは多い。
 - 実際、ユーザーからの不満も上がったりしてる
@@ -116,8 +116,9 @@ IMO, Next.js would be better to implement the below features for the browser bac
 Next.jsアプリでの快適なブラウザバック体験のためには、以下のような機能を実装されてることが望ましいと考えられます。
 
 - スクロール位置復元
-- Next.jsのルーティングとUI Stateの同期
-  - `next/router`がRecoilやReduxなどの状態管理ライブラリと統合しやすい状態が望ましいと考えられます
+- Ui Stateの復元
+  - Next.jsのルーティングとUI Stateの同期
+    - `next/router`がRecoilやReduxなどの状態管理ライブラリと統合しやすい状態が望ましいと考えられます
 -->
 
 ---
@@ -143,7 +144,7 @@ module.exports = nextConfig
 
 <!--
 スクロール復元についてはすでに、experimentalで実装されています。
-beta機能のappディレクトリでは未対応＋他の対応をする予定っぽいような記述も見られる？ので、現状pagesでのみ対応されてます。
+beta機能のappディレクトリでは未対応のため現状pagesでのみ対応されてます。
 -->
 
 ---
@@ -221,8 +222,8 @@ export const counter = atom<number>({
     syncEffect({
       storeKey: 'ui-state',
       refine: number(),
-    }
-  )],
+    }),
+  ],
 })
 ```
 
